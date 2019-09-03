@@ -34,6 +34,7 @@ namespace SchuleApp1
             };
             _index = 0;
             DataBinding(_index);
+
         }
         private void DataBinding(int index)
         {
@@ -44,20 +45,17 @@ namespace SchuleApp1
             txtAddressClient.Text = _clients[index].Address;
             txtOrderClient.Text = _clients[index].Order;
         }
+       public Client client=new Client();
         private void BtnNew_Click(object sender, EventArgs e)
         {
             NewClient newClient = new NewClient();
-            newClient.Show();
-            Client client = new Client
+            if (newClient.ShowDialog() == DialogResult.OK)
             {
-                SerialNuber = newClient.SrialNumber,
-                FirstName=newClient.Firstname,
-                LastName=newClient.Lastname,
-                Address=newClient.Address,
-                Phone=newClient.Phone,
-                Order=newClient.Order
-            };
-            _clients.Add(client);
+                client = newClient.newClient;
+                _clients.Add(client);
+            }
+            
+
         }
 
         private void BtnNext_Click(object sender, EventArgs e)

@@ -13,40 +13,49 @@ namespace SchuleApp1
 {
     public partial class NewClient : Form
     {
+        private string _serialNumber;
         public string SrialNumber
         {
-            get => txtNumberClient.Text;
-            set => txtNumberClient.Text = value;
+            get =>_serialNumber;
+            set => _serialNumber = value;
         }
+        public string _firstname;
         public string Firstname
         {
-            get => txtFirstnameClient.Text;
-            set => txtFirstnameClient.Text = value;
+            get => _firstname;
+            set => _firstname = value;
         }
+        private string _lastname;
         public string Lastname
         {
-            get => txtLastnameClient.Text;
-            set => txtLastnameClient.Text = value;
+            get => _lastname;
+            set => _lastname = value;
         }
+        private string _address;
         public string Address
         {
-            get => txtAddressClient.Text;
-            set => txtAddressClient.Text = value;
+            get => _address;
+            set => _address = value;
         }
+        private string _phone;
         public string Phone
         {
-            get => txtPhoneClient.Text;
-            set => txtPhoneClient.Text = value;
+            get => _phone;
+            set => _phone = value;
         }
+        private string _order;
         public string Order
         {
-            get => txtOrderClient.Text;
-            set => txtOrderClient.Text = value;
+            get => _order;
+            set => _order = value;
         }
-
+        public  Client newClient=new Client();
+     
         public NewClient()
         {
             InitializeComponent();
+          
+            
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -56,6 +65,24 @@ namespace SchuleApp1
                 MessageBox.Show(this, "Fields cannot be empty!",
                                    "Error", MessageBoxButtons.OK);
             }
+
+
+
+
+            newClient.SerialNuber = txtNumberClient.Text;
+            newClient.FirstName = txtFirstnameClient.Text;
+            newClient.LastName = txtLastnameClient.Text;
+            newClient.Address = txtAddressClient.Text;
+            newClient.Phone = txtPhoneClient.Text;
+            newClient.Order = txtOrderClient.Text;
+               
+            
+           
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SchuleApp1.Models;
+﻿using SchuleApp1.Forms;
+using SchuleApp1.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,7 +54,7 @@ namespace SchuleApp1
 
         private void FormAddNew()
         {
-            NewClient newClient = new NewClient();
+            AddNew newClient = new AddNew();
             if (newClient.ShowDialog() == DialogResult.OK)
             {
                 client = newClient.newClient;
@@ -197,33 +198,53 @@ namespace SchuleApp1
             str.Close();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btnDownloadData_Click(object sender, EventArgs e)
+        {
+            MethodDownloadData();
+        }
+        private void downloadDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MethodDownloadData();
+        }
+
+        private void MethodDownloadData()
         {
             OpenFileDialog openFile = new OpenFileDialog();
             _clients = _clients = new List<Client>();
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                //string data = File.ReadAllText(openFile.FileName);
                 using (StreamReader sr = new StreamReader(openFile.FileName))
                 {
-                    
+
                     while (!sr.EndOfStream)
                     {
-                       
-                            Client client = new Client
-                            {
-                                SerialNuber = sr.ReadLine(),
-                                LastName = sr.ReadLine(),
-                                FirstName = sr.ReadLine(),
-                                Address = sr.ReadLine(),
-                                Phone = sr.ReadLine(),
-                                Order = sr.ReadLine()
-                            };
+
+                        Client client = new Client
+                        {
+                            SerialNuber = sr.ReadLine(),
+                            LastName = sr.ReadLine(),
+                            FirstName = sr.ReadLine(),
+                            Address = sr.ReadLine(),
+                            Phone = sr.ReadLine(),
+                            Order = sr.ReadLine()
+                        };
                         _clients.Add(client);
                     }
                 }
-                MethodNext();
+                DataBinding(_index);
+            }
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            int index = _index;
+            Change change = new Change();
+            if (change.ShowDialog() == DialogResult.OK)
+            {
+                _clients.RemoveAt(index);
+                client = change.changeClient;
+                _clients.Insert(index,client);
             }
         }
     }

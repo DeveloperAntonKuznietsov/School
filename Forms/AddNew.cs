@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SchuleApp1
 {
-    public partial class NewClient : Form
+    public partial class AddNew : Form
     {
         private string _serialNumber;
         public string SrialNumber
@@ -51,7 +51,7 @@ namespace SchuleApp1
         }
         public  Client newClient=new Client();
      
-        public NewClient()
+        public AddNew()
         {
             InitializeComponent();
           

@@ -48,12 +48,12 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnLast = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnChange = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnDownloadData = new System.Windows.Forms.Button();
             this.btnSaveData = new System.Windows.Forms.Button();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -267,14 +267,15 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.BtnNew_Click);
             // 
-            // button6
+            // btnChange
             // 
-            this.button6.Location = new System.Drawing.Point(231, 442);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Change";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnChange.Location = new System.Drawing.Point(231, 442);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(75, 23);
+            this.btnChange.TabIndex = 6;
+            this.btnChange.Text = "Change";
+            this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // btnDelete
             // 
@@ -312,15 +313,15 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Search by №";
             // 
-            // button7
+            // btnDownloadData
             // 
-            this.button7.Location = new System.Drawing.Point(540, 441);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(92, 23);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "Download data";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnDownloadData.Location = new System.Drawing.Point(540, 441);
+            this.btnDownloadData.Name = "btnDownloadData";
+            this.btnDownloadData.Size = new System.Drawing.Size(92, 23);
+            this.btnDownloadData.TabIndex = 12;
+            this.btnDownloadData.Text = "Download Data";
+            this.btnDownloadData.UseVisualStyleBackColor = true;
+            this.btnDownloadData.Click += new System.EventHandler(this.btnDownloadData_Click);
             // 
             // btnSaveData
             // 
@@ -377,11 +378,12 @@
             this.downloadDataToolStripMenuItem.Name = "downloadDataToolStripMenuItem";
             this.downloadDataToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.downloadDataToolStripMenuItem.Text = "Download Data";
+            this.downloadDataToolStripMenuItem.Click += new System.EventHandler(this.downloadDataToolStripMenuItem_Click);
             // 
             // saveDataToolStripMenuItem
             // 
             this.saveDataToolStripMenuItem.Name = "saveDataToolStripMenuItem";
-            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.saveDataToolStripMenuItem.Text = "Save Data";
             this.saveDataToolStripMenuItem.Click += new System.EventHandler(this.saveDataToolStripMenuItem_Click);
             // 
@@ -453,12 +455,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 477);
             this.Controls.Add(this.btnSaveData);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.btnDownloadData);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtBoxSearch);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnChange);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnNext);
@@ -501,12 +503,12 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnDownloadData;
         private System.Windows.Forms.Button btnSaveData;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;

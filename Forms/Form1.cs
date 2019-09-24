@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,32 +24,12 @@ namespace SchuleApp1
             {
                 new Client
                 {
-                    SerialNuber="123",
-                    LastName="popov",
-                    FirstName="alex",
-                    Address="sss",
-                    Phone="222",
-                    Order="sasw"
-                },
-                new Client
-                {
-                    SerialNuber="22",
-                    LastName="22",
-                    FirstName="22",
-                    Address="22",
-                    Phone="33",
-                    Order="33"
-
-                },
-                new Client
-                {
-                    SerialNuber="3",
-                    LastName="3",
-                    FirstName="3",
-                    Address="3",
-                    Phone="4",
-                    Order="5"
-
+                    SerialNuber="00",
+                    LastName="Default",
+                    FirstName="Default",
+                    Address="Default",
+                    Phone="Default",
+                    Order="Default"
                 }
             };
             _index = 0;
@@ -172,6 +153,78 @@ namespace SchuleApp1
                 MessageBox.Show("Fields cannot be empty!", "Error",  MessageBoxButtons.OK);
             }
             
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            _clients.RemoveAt(_index);
+            MethodNext();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _clients.RemoveAt(_index);
+            MethodNext();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            MethodSaveData();
+        }
+
+        private void saveDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MethodSaveData();
+        }
+
+        private void MethodSaveData()
+        {
+            StreamWriter str = new StreamWriter("clients.txt");
+            for (int i = 0; i < _clients.Count; i++)
+            {
+                str.WriteLine(_clients[i].SerialNuber);
+                str.WriteLine(_clients[i].FirstName);
+                str.WriteLine(_clients[i].LastName);
+                str.WriteLine(_clients[i].Phone);
+                str.WriteLine(_clients[i].Address);
+                str.WriteLine(_clients[i].Order);
+            }
+            str.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            _clients = _clients = new List<Client>();
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                //string data = File.ReadAllText(openFile.FileName);
+                using (StreamReader sr = new StreamReader(openFile.FileName))
+                {
+                    
+                    while (!sr.EndOfStream)
+                    {
+                       
+                            Client client = new Client
+                            {
+                                SerialNuber = sr.ReadLine(),
+                                LastName = sr.ReadLine(),
+                                FirstName = sr.ReadLine(),
+                                Address = sr.ReadLine(),
+                                Phone = sr.ReadLine(),
+                                Order = sr.ReadLine()
+                            };
+                        _clients.Add(client);
+                    }
+                }
+                MethodNext();
+            }
         }
     }
 }

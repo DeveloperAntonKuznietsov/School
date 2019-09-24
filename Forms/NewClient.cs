@@ -75,9 +75,10 @@ namespace SchuleApp1
             newClient.Address = txtAddressClient.Text;
             newClient.Phone = txtPhoneClient.Text;
             newClient.Order = txtOrderClient.Text;
-               
-            
-           
+
+
+            MessageBox.Show(this, "Added successfully!",
+                                    "Like a house on fire!", MessageBoxButtons.OK);
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
